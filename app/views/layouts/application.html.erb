@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FlashCards</title> 
+  <!--[if lt IE 9]>
+   <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+      <div class="container">
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </a>
+         <a class="brand" href="#">Flash Cards</a>
+         <div class="nav-collapse">
+            <ul class="nav">
+               <li><%= link_to "Browse Subjects", subjects_path %></li>
+               <li><%= link_to "Contact Us" %></li>
+               <li><%= link_to "Mine" %></li>
+               <li><%= link_to "Yours" %></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>   
+   
+<div class="container">
+   <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>"> 
+         <a class="close" data-dismiss="alert">x</a>
+         <%= msg %>
+      </div>
+   <% end %>
+   
+   <div class="row">
+      <div class="span9">
+         <%= yield %>
+      </div>
+      <div class="span3">
+         <h3>About Flash Cards</h3>
+         Cool system.  It'll blow your mind.
+      </div>
+   </div>
+</div>
+
+</body>
+</html>

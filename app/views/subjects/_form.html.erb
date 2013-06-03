@@ -1,0 +1,15 @@
+<%= simple_form_for @subject, :html => { :class => 'form-horizontal' } do |f| %>
+
+   <fieldset id="<%= controller.action_name.capitalize %> Subject" class="">
+      <legend> Subject</legend>
+      
+      <%= f.input :subject_name %>
+      
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    subjects_path, :class => 'btn' %>
+      </div>
+   </fieldset>
+
+<% end %>
