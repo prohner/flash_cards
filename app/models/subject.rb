@@ -1,15 +1,21 @@
 class Subject < ActiveRecord::Base
   has_many :topics
 
-  validates_presence_of :subject_name
-  validates_presence_of :uuid
-  validates_uniqueness_of :uuid
+  validates_presence_of :subject_name, :message => "Subject name is required"
+  validates_presence_of :uuid, :message => "Subjects must have a UUID"
+  validates_uniqueness_of :uuid, :message => "Subject UUIDs must be unique"
+  validates_presence_of :download_code, :message => "Subjects must have a download code"
+  validates_uniqueness_of :download_code, :message => "Subject download codes must be unique"
   
   after_initialize :init
 
   private
     def init
       self.uuid ||= SecureRandom.uuid
+      self.download_code ||= loop do
+        random_token = SecureRandom.hex(3)
+        break random_token unless Subject.where(download_code: random_token).exists?
+      end
       true
     end
 end

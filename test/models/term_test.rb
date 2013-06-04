@@ -15,10 +15,7 @@ class TermTest < ActiveSupport::TestCase
 
   test "should create a default UUID" do
     term = Term.new
-    term.question = "123"
-    term.answer = "321"
     assert term.uuid != nil
-    assert term.save
   end
 
   test "should save with term question, answer, and UUID" do
