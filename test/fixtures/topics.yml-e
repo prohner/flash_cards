@@ -2,8 +2,6 @@
 
 one:
   topic_name: MyString
-  uuid: MyString
 
 two:
   topic_name: MyString
-  uuid: MyString

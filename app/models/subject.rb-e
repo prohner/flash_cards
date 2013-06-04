@@ -13,7 +13,7 @@ class Subject < ActiveRecord::Base
     def init
       self.uuid ||= SecureRandom.uuid
       self.download_code ||= loop do
-        random_token = SecureRandom.hex(3)
+        random_token = SecureRandom.hex(3).to_s
         break random_token unless Subject.where(download_code: random_token).exists?
       end
       true

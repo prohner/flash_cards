@@ -46,4 +46,13 @@ class SubjectTest < ActiveSupport::TestCase
     subject.download_code = "123"
     assert ! subject.save
   end
+  
+  test "download code should not change" do
+    s1 = subjects(:one)
+    s2 = subjects(:one)
+    
+    assert s1.download_code == s2.download_code
+    puts s1.download_code
+    puts s2.download_code
+  end
 end

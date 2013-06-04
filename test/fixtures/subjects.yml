@@ -2,8 +2,6 @@
 
 one:
   subject_name: MyString
-  uuid: MyString1
 
 two:
   subject_name: MyString
-  uuid: MyString2

@@ -15,7 +15,7 @@
     <% @subjects.each do |subject| %>
       <tr>
         <td><%= link_to subject.subject_name, subject_path(subject) %></td>
-        <td><%= subject.uuid %></td>
+        <td><%= link_to subject.download_code, :controller => "downloads", :action => "subject", :download_code => subject.download_code, :format => "json" %></td>
         <td><%= time_ago_in_words(subject.created_at) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

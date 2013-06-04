@@ -4,6 +4,9 @@ FlashCards::Application.routes.draw do
   resources :topics
 
   resources :subjects
+  
+  get 'downloads/subject/:download_code' => 'downloads#subject'
+  get 'downloads/topic/:download_code' => 'downloads#topic'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
