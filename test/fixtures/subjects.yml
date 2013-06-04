@@ -2,6 +2,10 @@
 
 one:
   subject_name: MyString
+  uuid: 123456
+  download_code: abcdefg
 
 two:
   subject_name: MyString
+  uuid: 654321
+  download_code: gfedcba

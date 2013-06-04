@@ -52,7 +52,5 @@ class SubjectTest < ActiveSupport::TestCase
     s2 = subjects(:one)
     
     assert s1.download_code == s2.download_code
-    puts s1.download_code
-    puts s2.download_code
   end
 end

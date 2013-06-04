@@ -1,6 +1,6 @@
       <tr>
         <td><%= link_to topic.topic_name, topic_path(topic) %></td>
-        <td><%= topic.uuid %></td>
+        <td><%= link_to topic.download_code, :controller => "downloads", :action => "topic", :download_code => topic.download_code, :format => "json" %></td>
         <td><%= time_ago_in_words(topic.created_at) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
