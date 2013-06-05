@@ -13,6 +13,7 @@ class DownloadsControllerTest < ActionController::TestCase
     body = ActiveSupport::JSON.decode(@response.body).symbolize_keys
     assert body[:download_code] == @subject.download_code
     assert body[:subject_name] == @subject.subject_name
+    assert body[:uuid] == @subject.uuid
   end
 
   test "should get all topic data" do
@@ -22,5 +23,6 @@ class DownloadsControllerTest < ActionController::TestCase
     body = ActiveSupport::JSON.decode(@response.body).symbolize_keys
     assert body[:download_code] == @topic.download_code
     assert body[:topic_name] == @topic.topic_name
+    assert body[:uuid] == @topic.uuid
   end
 end

@@ -10,6 +10,10 @@ class Topic < ActiveRecord::Base
   
   after_initialize :init
 
+  def as_json(options={ })
+    super({ :include => { :terms => {:except => [:id, :topic_id, :created_at, :updated_at]}}, :except => [:id, :created_at, :updated_at]}.merge(options))
+  end  
+
   private
     def init
       self.uuid ||= SecureRandom.uuid
