@@ -24,11 +24,17 @@ set :ssh_options, { :forward_agent => true }
 set :branch, "master"
 set :deploy_via, :remote_cache
 
+after "deploy:update_code","deploy:config_symlink"
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
+
+  task :config_symlink do
+    run "cp /home/preston/Sites/shared/flashcards/database.yml #{release_path}/config/database.yml"
+  end
+
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
