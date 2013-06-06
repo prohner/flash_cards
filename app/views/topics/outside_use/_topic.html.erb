@@ -1,12 +1,12 @@
       <tr>
-        <td><%= link_to topic.topic_name, topic_path(topic) %></td>
+        <td><%= link_to topic.topic_name, subject_topic_path(@subject, topic) %></td>
         <td><%= link_to topic.download_code, :controller => "downloads", :action => "topic", :download_code => topic.download_code, :format => "json" %></td>
         <td><%= time_ago_in_words(topic.created_at) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_topic_path(topic), :class => 'btn btn-mini' %>
+                      edit_subject_topic_path(@subject, topic), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      topic_path(topic),
+                      subject_topic_path(@subject, topic),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>

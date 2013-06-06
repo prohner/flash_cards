@@ -2,6 +2,7 @@ require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
   setup do
+    @subject = subjects(:one)
     @topic = topics(:one)
   end
 
@@ -12,25 +13,26 @@ class TopicsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, subject_id: @subject.id
     assert_response :success
   end
 
   test "should create topic" do
     assert_difference('Topic.count') do
-      post :create, topic: { topic_name: @topic.topic_name }
+      post :create, {subject_id: @subject.id, topic: { topic_name: @topic.topic_name }}
     end
 
-    assert_redirected_to topic_path(assigns(:topic))
+    assert_redirected_to subject_path(@subject)
   end
 
   test "should show topic" do
-    get :show, id: @topic
+    get :show, { subject_id: @subject.id, id: @topic }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @topic
+#    get :edit, id: @topic
+    get :edit, subject_id: @subject.id, id: @topic
     assert_response :success
   end
 

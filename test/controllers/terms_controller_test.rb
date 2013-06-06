@@ -2,6 +2,7 @@ require 'test_helper'
 
 class TermsControllerTest < ActionController::TestCase
   setup do
+    @subject = subjects(:one)
     @term = terms(:one)
   end
 
@@ -12,7 +13,7 @@ class TermsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, { subject: @subject }
     assert_response :success
   end
 

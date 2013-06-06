@@ -10,10 +10,12 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @subject = Subject.find(params[:subject_id])
   end
 
   # GET /topics/new
   def new
+    @subject = Subject.find(params[:subject_id])
     @topic = Topic.new
   end
 
@@ -24,11 +26,13 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
+    @subject = Subject.find(params[:subject_id])
     @topic = Topic.new(topic_params)
+    @subject.topics << @topic
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to @subject, notice: 'Topic was successfully created.' }
         format.json { render action: 'show', status: :created, location: @topic }
       else
         format.html { render action: 'new' }
