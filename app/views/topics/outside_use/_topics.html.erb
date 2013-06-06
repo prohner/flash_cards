@@ -14,3 +14,6 @@
      <%= render :partial => 'topics/outside_use/topic', :collection => topics %>
   </tbody>
 </table>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_topic_path(@subjec),
+            :class => 'btn btn-primary' %>

@@ -22,7 +22,6 @@ class TermTest < ActiveSupport::TestCase
     term = Term.new                   
     term.question = "abc"
     term.answer = "321"
-    term.uuid = "123"
     assert term.save
   end
   

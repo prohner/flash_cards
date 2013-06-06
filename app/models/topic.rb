@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   belongs_to :subject
-  has_many :terms
+  has_many :terms, :dependent => :destroy
 
   validates_presence_of :topic_name, :message => "Must have a topic name"
   validates_presence_of :uuid, :message => "Must have a UUID"

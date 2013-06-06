@@ -53,4 +53,23 @@ class SubjectTest < ActiveSupport::TestCase
     
     assert s1.download_code == s2.download_code
   end
+
+  test "topics should destroy their own topics and not leave orphans" do
+    subject = Subject.new                   
+    subject.subject_name = "abc"
+    assert subject.save!
+
+    topic = subject.topics.create()
+    topic.topic_name = "whatever"
+    assert topic.save!
+    topic_id = topic.id
+    assert_not_nil topic_id
+
+    re_topic = Topic.find_by_id(topic_id)
+    assert_not_nil re_topic
+
+    subject.destroy!()
+    re_topic = Topic.find_by_id(topic_id)
+    assert_nil re_topic
+  end
 end

@@ -1,5 +1,5 @@
 class Subject < ActiveRecord::Base
-  has_many :topics
+  has_many :topics, :dependent => :destroy
 
   validates_presence_of :subject_name, :message => "Subject name is required"
   validates_presence_of :uuid, :message => "Subjects must have a UUID"
