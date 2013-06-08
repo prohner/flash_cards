@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  topic_name: MyString
+  topic_name: TopicOne
   uuid: 123456
   download_code: abcdefg
 
 two:
-  topic_name: MyString
+  topic_name: TopicTwo
   uuid: 654321
   download_code: gfedcba

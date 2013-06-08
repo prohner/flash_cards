@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  subject_name: MyString
+  subject_name: SubjectOne
   uuid: 123456
   download_code: abcdefg
 
 two:
-  subject_name: MyString
+  subject_name: SubjectTwo
   uuid: 654321
   download_code: gfedcba

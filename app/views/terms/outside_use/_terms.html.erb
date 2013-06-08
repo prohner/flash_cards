@@ -17,5 +17,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_term_path,
+            new_subject_topic_term_path(@subject, @topic),
             :class => 'btn btn-primary' %>

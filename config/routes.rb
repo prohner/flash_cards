@@ -3,7 +3,9 @@ FlashCards::Application.routes.draw do
   resources :topics#, :only => :destroy
 
   resources :subjects do
-    resources :topics 
+    resources :topics do
+      resources :terms
+    end
   end
   
   get 'downloads/subject/:download_code' => 'downloads#subject'

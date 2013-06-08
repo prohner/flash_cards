@@ -1,6 +1,7 @@
 class Term < ActiveRecord::Base
   belongs_to :topic
 
+  validates_presence_of :topic_id
   validates_presence_of :question, :answer
   validates_presence_of :uuid
   validates_uniqueness_of :uuid

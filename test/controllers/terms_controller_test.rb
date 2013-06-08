@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TermsControllerTest < ActionController::TestCase
   setup do
-    @subject = subjects(:one)
+    @topic = topics(:one)
     @term = terms(:one)
   end
 
@@ -13,13 +13,13 @@ class TermsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new, { subject: @subject }
+    get :new, { topic_id: @topic.id }
     assert_response :success
   end
 
   test "should create term" do
     assert_difference('Term.count') do
-      post :create, term: { answer: @term.answer, question: @term.question }
+      post :create, term: { topic_id: @topic.id, answer: @term.answer, question: @term.question }
     end
 
     assert_redirected_to term_path(assigns(:term))
@@ -36,6 +36,8 @@ class TermsControllerTest < ActionController::TestCase
   end
 
   test "should update term" do
+    @topic.terms << @term
+    @topic.save!
     patch :update, id: @term, term: { answer: @term.answer, question: @term.question, uuid: SecureRandom.uuid }
     assert_redirected_to term_path(assigns(:term))
   end

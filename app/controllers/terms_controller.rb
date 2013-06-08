@@ -14,6 +14,7 @@ class TermsController < ApplicationController
 
   # GET /terms/new
   def new
+    @topic = Topic.find(params[:topic_id])
     @term = Term.new
   end
 
@@ -25,7 +26,9 @@ class TermsController < ApplicationController
   # POST /terms.json
   def create
     @term = Term.new(term_params)
-
+    @topic = Topic.find(params[:term][:topic_id])
+    @topic.terms << @term
+    
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
