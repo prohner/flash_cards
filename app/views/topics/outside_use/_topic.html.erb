@@ -1,7 +1,9 @@
       <tr>
-        <td><%= link_to topic.topic_name, subject_topic_path(@subject, topic) %></td>
-        <td><%= link_to topic.download_code, :controller => "downloads", :action => "topic", :download_code => topic.download_code, :format => "json" %></td>
-        <td><%= time_ago_in_words(topic.created_at) %></td>
+        <td><%= link_to topic.topic_name, subject_topic_path(@subject, topic) %>
+              <br><small><%= pluralize(topic.terms.count, "question") %></small>
+        </td>
+<!--        <td><%= link_to topic.download_code, :controller => "downloads", :action => "topic", :download_code => topic.download_code, :format => "json" %></td>-->
+        <td><%= time_ago_in_words(topic.created_at) %> ago</td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_subject_topic_path(@subject, topic), :class => 'btn btn-mini' %>
